@@ -9,37 +9,20 @@ class Rope{
         }
         this.rope = Constraint.create(options);
         World.add(world, this.rope);
-    }
-    attach(body){
-        this.rope.bodyA = body;
-    }
     
-    fly(){
-        this.rope.bodyA = null;
-    }
+}
+display()
+{
+    var pointA=this.rope.bodyA.position;
+    var pointB=this.rope.bodyB.position
 
-    display(){
-        if(this.rope.bodyA){
-            var pointA = this.rope.bodyA.position;
-            var pointB = this.pointB;
-            push();
-            
-            stroke(48,22,8);
-            if(pointA.x < 220) {
-                strokeWeight(7);
-                line(pointA.x - 20, pointA.y, pointB.x -10, pointB.y);
-                line(pointA.x - 20, pointA.y, pointB.x + 30, pointB.y - 3);
-               
-            }
-            else{
-                strokeWeight(3);
-                line(pointA.x + 25, pointA.y, pointB.x -10, pointB.y);
-                line(pointA.x + 25, pointA.y, pointB.x + 30, pointB.y - 3);
-            }
-           
-            
-            pop();
-        }
-    }
-    
+    strokeWeight(2);
+
+    var Anchor1X=pointA.x
+    var Anchor1Y=pointA.y
+
+    var Anchor2X=pointB.x+this.offsetX
+    var Anchor2Y=pointB.y+this.offsetY
+line(Anchor1X,Anchor1Y,Anchor2X,Anchor2Y);
+}
 }
